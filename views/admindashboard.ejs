@@ -1,0 +1,56 @@
+<!-- admindashboard.ejs -->
+
+<%- include('partials/header') %>
+
+<div class="container-fluid" style="padding: 30px;">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="h2" style="font-weight: bold; font-size: 24px;">Dashboard</h1>
+
+    <div class="btn-group">
+      <a href="/admin/search" class="btn btn-outline-primary" style="font-size: 14px; border-radius: 5px;">Search</a>
+      <!-- <a href="/admin/addUser" class="btn btn-outline-success" style="font-size: 14px; border-radius: 5px;">Add User</a> -->
+      <a href="/admin/logout" class="btn btn-outline-danger" style="font-size: 14px; border-radius: 5px;">Log Out</a>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <div class="table-responsive mt-4">
+    <h2><%= title %></h2>
+
+    <table class="table table-striped" style="border-collapse: collapse; width: 100%;">
+      <thead>
+        <tr>
+          <th style="font-weight: bold; padding: 10px;">Email</th>
+          <th style="font-weight: bold; padding: 10px;">Name</th>
+          <th style="font-weight: bold; padding: 10px;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% user.forEach(user => { %>
+          <tr>
+            <td style="padding: 10px;"><%= user.email %></td>
+            <td style="padding: 10px;"><%= user.name %></td>
+            <td style="padding: 10px;">
+              <button class="btn btn-danger" style="background-color: #dc3545; color: white; padding: 5px 10px; border-radius: 5px;">
+                <a href="/admin/delete/<%= user._id %>" class="text-white">Delete</a>
+              </button>
+
+              <button class="btn btn-warning" style="background-color: #ffc107; color: white; padding: 5px 10px; border-radius: 5px;">
+                <a href="/admin/edit/<%= user._id %>" class="text-white">Edit</a>
+              </button>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- admindashboard.ejs -->
+
+<!-- Your existing HTML content for the admin dashboard -->
+
+
+
+<%- include('partials/footer') %>

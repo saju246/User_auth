@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="h3">Search Results</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Search form -->
+                        <form action="/admin/search" method="GET" class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="keyword" name="keyword"
+                                    placeholder="Enter email">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
+
+
+                        <!-- Display the search results here -->
+                        <table class="table mt-4">
+                            <!-- Table headers -->
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+
+                            <!-- Loop through and display the search results -->
+                            <tbody>
+                                <% user.forEach(user=> { %>
+                                    <tr>
+                                        <td>
+                                            <%= user.email %>
+                                        </td>
+                                        <td>
+                                            <%= user.name %>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
